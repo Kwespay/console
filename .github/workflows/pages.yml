@@ -38,7 +38,6 @@ jobs:
 
       - run: pnpm build
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_KWESPAY_ENDPOINT: https://api.testnet.kwespay.xyz/graphql
 
       - uses: actions/upload-pages-artifact@v3
