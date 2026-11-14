@@ -20,7 +20,7 @@ import { NetworkPicker } from "./NetworkPicker";
 import { ResultPanel } from "./ResultPanel";
 import { TestTokensIntro } from "./TestTokensIntro";
 import { TestTokensSheet, type TokenItem } from "./TestTokensSheet";
-import { Button, TokenStack } from "./ui";
+import { Button, TokenStack, cx } from "./ui";
 import { WalletSheet } from "./WalletSheet";
 
 const HOSTED_ENDPOINT = process.env.NEXT_PUBLIC_KWESPAY_ENDPOINT || "https://api.testnet.kwespay.xyz/graphql";
@@ -524,9 +524,9 @@ export function Console() {
         <div className="mb-4 flex items-center gap-3">
           <NetworkPicker selected={networkKey} enabled={account.merchant?.enabledNetworks as string[] | undefined} locked={running} onSelect={setNetworkKey} />
           <div className="relative ml-auto flex items-center gap-1">
-            <Button variant={tokensUsed ? "ghost" : "secondary"} size="sm" onClick={() => setTokensOpen(true)} className={tokensUsed ? undefined : "kp-sheen"}>
-              <TokenStack symbols={[network.native.symbol, ...network.tokens.map((t) => t.symbol)]} />
-              Test tokens
+            <Button variant="inverse" size="md" onClick={() => setTokensOpen(true)} className={cx("gap-2.5 pl-2", !tokensUsed && "kp-sheen")}>
+              <TokenStack symbols={[network.native.symbol, ...network.tokens.map((t) => t.symbol)]} ring="ring-text" />
+              Get test tokens
             </Button>
             <TestTokensIntro open={showIntro} network={network} onGet={() => setTokensOpen(true)} onDismiss={dismissIntro} />
           </div>

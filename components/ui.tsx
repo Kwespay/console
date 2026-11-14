@@ -77,7 +77,7 @@ export function Icon({ name, className, strokeWidth = 1.5 }: { name: IconName; c
   );
 }
 
-type Variant = "primary" | "secondary" | "ghost" | "link";
+type Variant = "primary" | "secondary" | "inverse" | "ghost" | "link";
 type Size = "xs" | "sm" | "md" | "lg";
 
 export function buttonClass(variant: Variant = "secondary", size: Size = "md", className?: string): string {
@@ -86,6 +86,8 @@ export function buttonClass(variant: Variant = "secondary", size: Size = "md", c
       "bg-brand text-on-brand font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_1px_1px_rgba(15,18,24,0.08)] hover:bg-brand-hover active:bg-brand-press active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.22)] disabled:bg-surface-3 disabled:text-muted disabled:shadow-none disabled:ring-1 disabled:ring-inset disabled:ring-border",
     secondary:
       "bg-surface text-text font-medium ring-1 ring-inset ring-control-ring shadow-[0_1px_2px_rgba(15,18,24,0.07)] hover:bg-hover active:bg-surface-3 disabled:text-faint disabled:ring-border",
+    inverse:
+      "bg-text text-surface font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_1px_2px_rgba(15,18,24,0.16),0_4px_12px_-4px_rgba(15,18,24,0.28)] hover:bg-text-2 active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.25)]",
     ghost: "text-text-2 font-medium hover:bg-hover hover:text-text active:bg-surface-3 disabled:text-faint",
     link: "text-brand font-medium hover:text-brand-hover underline-offset-2 hover:underline disabled:text-faint",
   }[variant];
@@ -256,13 +258,13 @@ export function TokenLogo({ symbol, size = 16, className }: { symbol: string; si
   return <Logo key={symbol} asset={tokenLogo(symbol)} size={size} className={className} />;
 }
 
-export function TokenStack({ symbols, size = 20, max = 3 }: { symbols: string[]; size?: number; max?: number }) {
+export function TokenStack({ symbols, size = 20, max = 3, ring = "ring-surface" }: { symbols: string[]; size?: number; max?: number; ring?: string }) {
   const shown = [...new Set(symbols.map((s) => s.toUpperCase()))].filter((s) => tokenLogo(s)).slice(0, max);
   if (!shown.length) return null;
   return (
     <span aria-hidden className="flex shrink-0 items-center">
       {shown.map((s, i) => (
-        <span key={s} className="flex rounded-full bg-surface ring-2 ring-surface" style={{ marginLeft: i ? -size * 0.35 : 0, zIndex: shown.length - i }}>
+        <span key={s} className={cx("flex rounded-full bg-surface ring-2", ring)} style={{ marginLeft: i ? -size * 0.3 : 0, zIndex: shown.length - i }}>
           <TokenLogo symbol={s} size={size} className="rounded-full" />
         </span>
       ))}
