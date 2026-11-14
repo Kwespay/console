@@ -1,6 +1,6 @@
 # KwesPay Console
 
-**[Open the console →](https://kwespay.github.io/kwespay-console/)**
+**[Open the console →](https://console.kwespay.xyz/)**
 
 Make real **Stellar Testnet** payments with [`@kwespay/client`](https://www.npmjs.com/package/@kwespay/client) from your browser, with nothing to install. Watch every step from the signed quote to on-chain confirmation, then copy the exact code into your app. Sui Testnet and six EVM testnets run through the same flow.
 
@@ -17,7 +17,7 @@ Testnet only. Test tokens have no real value.
 
 ## Your first Stellar payment
 
-1. [Open the console](https://kwespay.github.io/kwespay-console/?network=stellarTestnet) on Stellar Testnet.
+1. [Open the console](https://console.kwespay.xyz/?network=stellarTestnet) on Stellar Testnet.
 2. Click **Connect** and paste your API key and Vendor ID.
 3. Click **Connect wallet** and approve Freighter.
 4. Open **Test tokens**:
@@ -89,7 +89,7 @@ The console only offers the tokens your merchant accepts. Amounts can use any IS
 
 ## NEAR Testnet
 
-1. [Open the console](https://kwespay.github.io/kwespay-console/?network=nearTestnet) on NEAR Testnet and connect your merchant (NEAR Testnet enabled, with a NEAR receiving account).
+1. [Open the console](https://console.kwespay.xyz/?network=nearTestnet) on NEAR Testnet and connect your merchant (NEAR Testnet enabled, with a NEAR receiving account).
 2. **Connect wallet** and pick Meteor, Intear or Sender. The console loads NEAR wallet support only when you open this network.
 3. **Test tokens**: get test NEAR from the NEAR faucet, then press **Get 100 test USDC.e** or **Get 100 test USDT**. The first mint also registers your account with the token. Circle USDC comes from Circle's faucet.
 4. Send. Native NEAR goes through `pay_near`; stablecoins go through `ft_transfer_call` on the token. KwesPay's NEAR fee is 1%.
